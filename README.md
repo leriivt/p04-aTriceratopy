@@ -1,1 +1,7 @@
-# p4-aTriceratopy
+# _____ by aTriceratopy
+## Roster:
+Brian Yang - 
+Johnathan Song - 
+Prattay Dey - 
+(PM) Verit Li - 
+## Description:
