@@ -1,7 +1,7 @@
 # _____ by aTriceratopy
 ## Roster:
 Brian Yang -   
-Johnathan Song -   
+Jonathan Song -   
 Prattay Dey -   
 (PM) Verit Li - 
 ## Description:
