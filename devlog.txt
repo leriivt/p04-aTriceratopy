@@ -30,3 +30,14 @@ veritL -- 2023-05-03 00:39
 --------------------------------------------------------------
 Added first version design doc. (design0.pdf)
 ==============================================================
+veritL -- 2023-05-04 00:35
+--------------------------------------------------------------
+Added updated design doc post-feedback. 
+Feedback asked about:
+How we would incorporate animation:
+    - Animating a plane flying its route
+    - Possibly a cloud parting animation upon a page load
+Explain why we want to cache the info of the rankins/trends of our data:
+    - The rankings are stored so that they don’t have to calculated every time the trends page is loaded
+-- Also added link to D3.js graph gallery  
+==============================================================
