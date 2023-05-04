@@ -41,8 +41,8 @@ Explain why we want to cache the info of the rankins/trends of our data:
     - The rankings are stored so that they don’t have to calculated every time the trends page is loaded
 -- Also added link to D3.js graph gallery  
 ==============================================================
-==============================================================
 veritL -- 2023-05-04 13:11
 --------------------------------------------------------------
 Started db functions for resetting db.
 Added py files.
+==============================================================
