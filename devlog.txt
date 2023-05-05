@@ -43,4 +43,6 @@ Explain why we want to cache the info of the rankins/trends of our data:
 ==============================================================
 brianY -- 2023-04-27 13:10
 --------------------------------------------------------------
-Added team flag.
+Added base files for flask, css, js
+Created basic runabble flask
+==============================================================
