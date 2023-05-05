@@ -1,14 +1,16 @@
 import requests
 import json
 
-def forward_geocode(address){
-    return requests.get(f"https://api.positionstack.com/v1/forward
-    ? access_key = YOUR_ACCESS_KEY
-    & query = {address}")
-}
+def get_key():
+    with open('../key_positionstack.txt', 'r') as file:
+        key = file.read()
+    return key
 
-def reverse_geocode(latitude, longitude){
-    return requests.get(f"https://api.positionstack.com/v1/reverse
-    ? access_key = YOUR_ACCESS_KEY
-    & query = {latitude},{longitude}")
-}
+def forward_geocode(address):
+    return requests.get(f"https://api.positionstack.com/v1/forward?access_key={get_key()}&query={address}")
+
+
+def reverse_geocode(latitude, longitude):
+    return requests.get(f"https://api.positionstack.com/v1/reverse?access_key={get_key()}&query={latitude},{longitude}")
+
+print( forward_geocode("1600 Pennsylvania Ave NW, Washington DC"))    
