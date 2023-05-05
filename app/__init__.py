@@ -6,6 +6,10 @@ app = Flask(__name__)
 def index():
     return render_template('map.html')
 
+@app.route('/summary')
+def summary():
+  return "nop"
+
 
 if __name__ == '__main__':
   app.debug = True
