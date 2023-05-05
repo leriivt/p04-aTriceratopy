@@ -41,8 +41,12 @@ Explain why we want to cache the info of the rankins/trends of our data:
     - The rankings are stored so that they don’t have to calculated every time the trends page is loaded
 -- Also added link to D3.js graph gallery
 ==============================================================
-brianY -- 2023-04-27 13:10
+brianY -- 2023-05-04 13:10
 --------------------------------------------------------------
 Added base files for flask, css, js
 Created basic runabble flask
+==============================================================
+prattayD -- 2023-05-04 13:11
+--------------------------------------------------------------
+Started adding basic get requests for position stack api
 ==============================================================
