@@ -161,3 +161,5 @@ cython_debug/
 
 # API Key file
 key_positionstack.txt
+
+*.csv
