@@ -55,6 +55,12 @@ veritL -- 2023-05-04 13:12
 Started db.py and function for resetting database
 Added base files for python
 ==============================================================
+prattayD -- 2023-05-05 13:11
+--------------------------------------------------------------
+Added .gitignore
+Added api access key to a private file not tracked by git
+Still figuring out request calls to api
+==============================================================
 veritL -- 2023-05-07 23:34
 --------------------------------------------------------------
 Added demo html and javascript for root route
