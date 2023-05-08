@@ -55,3 +55,8 @@ veritL -- 2023-05-04 13:12
 Started db.py and function for resetting database
 Added base files for python
 ==============================================================
+veritL -- 2023-05-07 23:34
+--------------------------------------------------------------
+Added demo html and javascript for root route
+(Taken from k30)
+==============================================================
