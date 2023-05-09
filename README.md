@@ -10,15 +10,15 @@ Aeroplano Graveyardo is a global map showing all civil aviation accidents from 1
 - [Position Stack](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_PositionStack.md)
 ## Launch Codes: 
 Create virtual environment  
-python -m venv squowel
-. squowel/bin/activate
-Install packages
-pip install -r requirements.txt
+`python -m venv squowel`  
+`. squowel/bin/activate`  
+Install packages  
+`pip install -r requirements.txt`  
 Clone repository  
-git clone git@github.com:leriivt/p4-aTriceratopy.git
-cd into app directory
-cd p4-aTriceratopy/app
-Start Flask server
-python __init__.py
-Go to http://127.0.0.1:5000/ in browser
+`git clone git@github.com:leriivt/p4-aTriceratopy.git`  
+cd into app directory  
+`cd p4-aTriceratopy/app`  
+Start Flask server  
+`python __init__.py`  
+Go to http://127.0.0.1:5000/ in browser  
 ## Data:  
