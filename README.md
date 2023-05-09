@@ -23,5 +23,5 @@ Aeroplano Graveyardo is a global map showing all civil aviation accidents from 1
 Go to http://127.0.0.1:5000/ in browser  
 ## Data:  
 - Description:
-- - Data of all crashes around the world from 1908-2019 with information including Date, Time, Location, Operator (Airline or operator of the aircraft), takeoff, destination, Aircraft type(model), crew #, passengers #, fatalities #
-- - Source: https://www.kaggle.com/datasets/cgurkan/airplane-crash-data-since-1908 
+  - Data of all crashes around the world from 1908-2019 with information including Date, Time, Location, Operator (Airline or operator of the aircraft), takeoff, destination, Aircraft type(model), crew #, passengers #, fatalities #
+  - Source: https://www.kaggle.com/datasets/cgurkan/airplane-crash-data-since-1908 
