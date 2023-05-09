@@ -18,6 +18,7 @@ Aeroplano Graveyardo is a global map showing all civil aviation accidents from 1
 `git clone git@github.com:leriivt/p4-aTriceratopy.git`  
 1. cd into app directory  
 `cd p4-aTriceratopy/app`  
+1. Download CSV data from https://www.kaggle.com/datasets/cgurkan/airplane-crash-data-since-1908 to 'p4-aTriceratopy/app`
 1. Start Flask server  
 `python __init__.py`  
 Go to http://127.0.0.1:5000/ in browser  
