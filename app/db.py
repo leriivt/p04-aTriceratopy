@@ -23,6 +23,7 @@ def reset_database():
     db.commit()
     db.close()
 
+#populates the crashes table
 def populate_crashes():
     db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
     c = db.cursor() #creates db cursor to execute and fetch      
@@ -32,6 +33,30 @@ def populate_crashes():
         id = 0
         for row in reader:
             c.execute("INSERT INTO crashes VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (id, row['Date'], row['Location'], row['Operator'], row['Route'], row['AC Type'], row['Aboard Crew'], row['Aboard Passangers'], row['Fatalities'], row['Ground'], row['Summary']))
+            id += 1
     
     db.commit()
     db.close()
+
+#get date of plane crash based on id
+def getDate(plane_id):
+    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
+    c = db.cursor()
+
+    c.execute("SELECT date FROM crashes WHERE id=?", (plane_id,))
+    date = c.fetchone()
+
+    db.close()
+
+    return date
+
+def getTime(plane_id):
+    return null
+
+def getLocation(plane_id):
+    return null
+
+#How get database data to javascript?
+# - javascript can talk to html
+# - html can talk to python
+# - python can talk to database
