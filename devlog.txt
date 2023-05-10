@@ -90,3 +90,30 @@ veritL -- 2023-05-09 13:16
 --------------------------------------------------------------
 Started getDate() style functions db.py
 ==============================================================
+veritL -- 2023-05-09 22:33
+--------------------------------------------------------------
+- latest best approach to pipelining your data from back-end to front-end:
+
+0. gather the data you pipeline to front-end (potentially converting it to json)
+1. use Flask to return this data to certain route (e.g. '/data')
+    - '/data' acts as a DATA CONDUIT and is form where javascript can 
+      access the sent data
+2. create a function in the javascript file (e.g. getData()) to access 
+   what is being returned to the '/data' route using
+   fetch('/data') followed by more functions like 
+   .then(response => response.text()) or 
+   .then(response => response.json()) to parse the data
+
+   and
+
+    .then(data => {
+        <A_VARIABLE> = data; 
+        console.log(jsonData); // Log the JSON data to the console
+    });
+
+    to store the data to a variable to be used.
+
+chatGPT was used for help
+
+- added some code to test pipelining
+==============================================================

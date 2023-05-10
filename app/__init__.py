@@ -10,6 +10,10 @@ def index():
 def summary():
   return "nop"
 
+@app.route('/data')
+def data():
+  return "this is data"
+
 
 if __name__ == '__main__':
   app.debug = True

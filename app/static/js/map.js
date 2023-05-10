@@ -19,3 +19,15 @@ d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
 
 
   // map gotten from youtube video bc i dont know how to do this
+
+  var getData = function() {
+    fetch('/data')
+      .then(response => response.text()) // Parse the response body as text
+      .then(data => {
+        //add code to store data to a variable
+        console.log(data); // Log the string data to the console
+      });
+
+  }
+
+  
