@@ -32,14 +32,14 @@ def populate_crashes():
         reader = csv.DictReader(crashes_csv)
         id = 0
         for row in reader:
-            c.execute("INSERT INTO crashes VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (id, row['Date'], row['Location'], row['Operator'], row['Route'], row['AC Type'], row['Aboard Crew'], row['Aboard Passangers'], row['Fatalities'], row['Ground'], row['Summary']))
+            c.execute("INSERT INTO crashes VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (id, row['Date'], row['Time'],row['Location'], row['Operator'], row['Route'], row['AC Type'], row['Aboard Crew'], row['Aboard Passangers'], row['Fatalities'], row['Ground'], row['Summary']))
             id += 1
     
     db.commit()
     db.close()
 
-#get date of plane crash based on id
-def getDate(plane_id):
+#get functions for crashes table start vvv
+def get_date(plane_id):
     db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
     c = db.cursor()
 
@@ -50,13 +50,94 @@ def getDate(plane_id):
 
     return date
 
-def getTime(plane_id):
-    return null
+def get_time(plane_id):
+    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
+    c = db.cursor()
 
-def getLocation(plane_id):
-    return null
+    c.execute("SELECT time FROM crashes WHERE id=?", (plane_id,))
+    time = c.fetchone()
 
-#How get database data to javascript?
-# - javascript can talk to html
-# - html can talk to python
-# - python can talk to database
+    db.close()
+
+    return time
+
+def get_location(plane_id):
+    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
+    c = db.cursor()
+
+    c.execute("SELECT location FROM crashes WHERE id=?", (plane_id,))
+    location = c.fetchone()
+
+    db.close()
+
+    return location
+
+def get_operator(plate_id):
+    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
+    c = db.cursor()
+
+    c.execute("SELECT operator FROM crashes WHERE id=?", (plane_id,))
+    operator = c.fetchone()
+
+    db.close()
+
+    return operator
+
+def get_model(plane_id):
+    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
+    c = db.cursor()
+
+    c.execute("SELECT model FROM crashes WHERE id=?", (plane_id,))
+    model = c.fetchone()
+
+    db.close()
+
+    return model
+
+def get_crew(plane_id):
+    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
+    c = db.cursor()
+
+    c.execute("SELECT crew FROM crashes WHERE id=?", (plane_id,))
+    crew = c.fetchone()
+
+    db.close()
+
+    return crew
+
+def get_passengers(plane_id):
+    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
+    c = db.cursor()
+
+    c.execute("SELECT passengers FROM crashes WHERE id=?", (plane_id,))
+    passengers = c.fetchone()
+
+    db.close()
+
+    return passengers
+
+def get_fatalities(plane_id):
+    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
+    c = db.cursor()
+
+    c.execute("SELECT fatalities FROM crashes WHERE id=?", (plane_id,))
+    fatalities = c.fetchone()
+
+    db.close()
+
+    return fatalities
+
+def get_ground(plane_id):
+    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
+    c = db.cursor()
+
+    c.execute("SELECT ground FROM crashes WHERE id=?", (plane_id,))
+    ground = c.fetchone()
+
+    db.close()
+
+    return ground
+#get functions for crashes table end ^^^
+
+def store_coordinates(plane_id, longitude, latitude):
+    return null

@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from db import *
 
 app = Flask(__name__)
 
@@ -18,3 +19,5 @@ def data():
 if __name__ == '__main__':
   app.debug = True
   app.run()
+  reset_database()
+  populate_crashes()
