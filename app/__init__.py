@@ -13,7 +13,8 @@ def summary():
 
 @app.route('/data')
 def data():
-  return "this is data"
+  store_coordinate(1,1,1)
+  return get_all_coordinates()
 
 
 if __name__ == '__main__':
@@ -21,3 +22,4 @@ if __name__ == '__main__':
   app.run()
   reset_database()
   populate_crashes()
+  populate_all_coordinates()

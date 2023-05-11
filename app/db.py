@@ -2,6 +2,7 @@
 
 import sqlite3
 import csv
+#from api import *
 
 DB_FILE = "airplane.db"
 CSV_FILE = "Airplane_Crashes_and_Fatalities_Since_1908_20190820105639.csv"
@@ -37,6 +38,34 @@ def populate_crashes():
     
     db.commit()
     db.close()
+
+def populate_all_coordinates():
+    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
+    c = db.cursor() #creates db cursor to execute and fetch   
+
+    c.execute("SELECT location FROM crashes")
+    locations = c.fetchall()
+    id = 0
+    latitude = 0
+    longitude = 0
+
+    for row in locations:
+        store_coordinate(id, latitude, longitude)
+        id += 1
+        latitude += 1
+        longitude += 1
+
+    db.close()
+
+
+def get_all_coordinates():
+    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
+    c = db.cursor() #creates db cursor to execute and fetch  
+
+    c.execute("SELECT * FROM coordinates")
+    everything = c.fetchall()
+
+    return everything
 
 #get functions for crashes table start vvv
 def get_date(plane_id):
@@ -139,12 +168,12 @@ def get_ground(plane_id):
     return ground
 #get functions for crashes table end ^^^
 
-def store_coordinates(plane_id, longitude, latitude):
+def store_coordinate(plane_id, longitude, latitude):
     data = (plane_id, longitude, latitude)
     db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
     c = db.cursor()
 
-    c.execute("INSERT INTO coordinates VALUES(?, ?)", data)
+    c.execute("INSERT INTO coordinates VALUES(?, ?, ?)", data)
     db.commit()
     db.close()
 
