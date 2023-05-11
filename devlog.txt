@@ -125,3 +125,8 @@ prattayD -- 2023-05-08 13:15
 --------------------------------------------------------------
 Looked into data visualizers for d3, starting js for ranking
 ==============================================================
+veritL -- 2023-05-10 23:22
+--------------------------------------------------------------
+Added db.py functions to populate coordinates and rankings tables
+Changed rankings table such that it stores item, category, rank, and number_of
+==============================================================
