@@ -148,6 +148,15 @@ veritL -- 2023-05-11 20:22
 Realized that opening/committing/close for every single new row is slow
 so changed populate_all_coordinates() to not do that
 ==============================================================
+BrianY -- 2023-05-11 22:14
+--------------------------------------------------------------
+Created howto and api guide for Mapbox/MapboxGL
+==============================================================
+BrianY -- 2023-05-12 12:50
+--------------------------------------------------------------
+Added MapboxGL map to map.html
+added function for adding markers to the map
+==============================================================
 veritL -- 2023-05-12 13:14
 --------------------------------------------------------------
 Made route_to_stops() function to db.py
