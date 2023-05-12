@@ -148,3 +148,7 @@ veritL -- 2023-05-11 20:22
 Realized that opening/committing/close for every single new row is slow
 so changed populate_all_coordinates() to not do that
 ==============================================================
+veritL -- 2023-05-12 13:14
+--------------------------------------------------------------
+Made route_to_stops() function to db.py
+==============================================================
