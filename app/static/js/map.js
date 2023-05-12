@@ -1,33 +1,41 @@
-const width = 900;
-const height = 600;
+var getData = function() {
+  fetch('/data')
+    .then(response => response.text()) // Parse the response body as text
+    .then(data => {
+      //add code to store data to a variable
+      console.log(data); // Log the string data to the console
+    });
 
-const svg = d3.select('body').append('svg').attr('width', width).attr('height', height);
+}
 
-const projection = d3.geoMercator().scale(140)
-  .translate([width/2, height/1.4]);
-const path = d3.geoPath(projection);
 
-const g = svg.append('g');
+mapboxgl.accessToken = 'pk.eyJ1Ijoiam9ubmVlZSIsImEiOiJjbGhnajRrY2IwNTl1M2ZuejVoaHF6Z3N4In0.v1HJ4aKSzUZz0cmzdnYbrQ';
 
-d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
-  .then(data =>{
-    const countries = topojson.feature(data, data.objects.countries);
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v11',
+  center: [-73.98, 40.73],
+  zoom: 10
+});
 
-  
-    g.selectAll('path').data(countries.features).enter().append('path').attr('class', 'country').attr('d', path);
+map.on('load', () => {
+  // Add a circle to the map at New York coordinates
+  map.addLayer({
+    'id': 'circle',
+    'type': 'circle',
+    'source': {
+      'type': 'geojson',
+      'data': {
+        'type': 'Feature',
+        'properties': {},
+        'geometry': {
+          'type': 'Point',
+          'coordinates': [-73.98, 40.73] // New York coordinates
+        }
+      }
+    },
+    'paint': {
+      'circle-radius': 10,
+      'circle-color': 'red'
+    }
   });
-
-
-  // map gotten from youtube video bc i dont know how to do this
-
-  var getData = function() {
-    fetch('/data')
-      .then(response => response.text()) // Parse the response body as text
-      .then(data => {
-        //add code to store data to a variable
-        console.log(data); // Log the string data to the console
-      });
-
-  }
-
-  
