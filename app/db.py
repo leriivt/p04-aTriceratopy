@@ -45,17 +45,24 @@ def populate_all_coordinates():
 
     c.execute("SELECT location FROM crashes")
     locations = c.fetchall()
+    #print(locations)
     id = 0
     latitude = 0
     longitude = 0
 
     for row in locations:
-        store_coordinate(id, latitude, longitude)
+        #store_coordinate(id, latitude, longitude)
+        data = (id, latitude, longitude)
+        c.execute("INSERT INTO coordinates VALUES(?, ?, ?)", data)
         id += 1
         latitude += 1
         longitude += 1
-
+    
+    db.commit()
     db.close()
+
+
+    
 
 
 def get_all_coordinates():

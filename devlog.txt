@@ -130,3 +130,17 @@ veritL -- 2023-05-10 23:22
 Added db.py functions to populate coordinates and rankings tables
 Changed rankings table such that it stores item, category, rank, and number_of
 ==============================================================
+veritL -- 2023-05-11 13:14
+--------------------------------------------------------------
+Started function to populate coordinates table, doesnt work properly
+==============================================================
+veritL -- 2023-05-11 20:17
+--------------------------------------------------------------
+Finished test function to populate coordinates table
+Values returned are dummy values for now
+==============================================================
+veritL -- 2023-05-11 20:22
+--------------------------------------------------------------
+Realized that opening/committing/close for every single new row is slow
+so changed populate_all_coordinates() to not do that
+==============================================================
