@@ -1,6 +1,6 @@
 # Aeroplano Graveyardo by aTriceratopy
 ## Roster:
-(PM) Verit Li - Database 
+(PM) Verit Li - Database  
 Brian Yang - Map page  
 Jonathan Song - Trends page  
 Prattay Dey - Summary page  
