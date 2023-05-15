@@ -74,8 +74,9 @@ def route_to_stops():
     for row in routes:
         route = row[0]
         #print(route)
-        if route == null or route.count(' - ') == 0:
-            all_routes[id] = null
+        #print(type(route))
+        if route == None or type(route) == int or route.count(' - ') == 0:
+            all_routes[id] = None
         else:
             stops = route.split(' - ')
             all_routes[id] = stops
@@ -94,6 +95,7 @@ def get_all_coordinates():
 
     c.execute("SELECT * FROM coordinates")
     everything = c.fetchall()
+    print(everything)
 
     return everything
 
