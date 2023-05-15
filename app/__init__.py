@@ -11,10 +11,13 @@ def index():
 def summary():
   return "nop"
 
-@app.route('/data')
+@app.route('/coordinates_data')
 def data():
   store_coordinate(1,1,1)
   return get_all_coordinates()
+
+#@app.route('/crashes_data')
+
 
 
 if __name__ == '__main__':
@@ -23,3 +26,4 @@ if __name__ == '__main__':
   reset_database()
   populate_crashes()
   populate_all_coordinates()
+  route_to_stops()

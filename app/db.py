@@ -61,6 +61,29 @@ def populate_all_coordinates():
     db.commit()
     db.close()
 
+#takes in all routes and returns a dictionary of id keys with values of a list of stops, null if no stops or unknown
+def route_to_stops():
+    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
+    c = db.cursor()
+
+    c.execute("SELECT route FROM crashes")
+    routes = c.fetchall()
+    all_routes = {}
+    id = 0
+
+    for row in routes:
+        route = row[0]
+        #print(route)
+        if route == null or route.count(' - ') == 0:
+            all_routes[id] = null
+        else:
+            stops = route.split(' - ')
+            all_routes[id] = stops
+        id += 1
+    
+    return all_routes
+        
+        
 
     
 
@@ -73,6 +96,16 @@ def get_all_coordinates():
     everything = c.fetchall()
 
     return everything
+
+def get_all_crashes():
+    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
+    c = db.cursor() #creates db cursor to execute and fetch  
+
+    c.execute("SELECT * FROM crashes")
+    everything = c.fetchall()
+
+    return everything
+
 
 #get functions for crashes table start vvv
 def get_date(plane_id):

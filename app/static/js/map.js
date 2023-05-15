@@ -1,33 +1,57 @@
-const width = 900;
-const height = 600;
-
-const svg = d3.select('body').append('svg').attr('width', width).attr('height', height);
-
-const projection = d3.geoMercator().scale(140)
-  .translate([width/2, height/1.4]);
-const path = d3.geoPath(projection);
-
-const g = svg.append('g');
-
-d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
-  .then(data =>{
-    const countries = topojson.feature(data, data.objects.countries);
-
-  
-    g.selectAll('path').data(countries.features).enter().append('path').attr('class', 'country').attr('d', path);
-  });
+var getData = function() {
+  fetch('/data')
+    .then(response => response.text()) // Parse the response body as text
+    .then(data => {
+      //add code to store data to a variable
+      console.log(data); // Log the string data to the console
+    })};
 
 
-  // map gotten from youtube video bc i dont know how to do this
+mapboxgl.accessToken = 'pk.eyJ1Ijoiam9ubmVlZSIsImEiOiJjbGhnajRrY2IwNTl1M2ZuejVoaHF6Z3N4In0.v1HJ4aKSzUZz0cmzdnYbrQ';
 
-  var getData = function() {
-    fetch('/data')
-      .then(response => response.text()) // Parse the response body as text
-      .then(data => {
-        //add code to store data to a variable
-        console.log(data); // Log the string data to the console
-      });
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v11',
+  center: [-73.98, 40.73],
+  zoom: 10
+});
 
-  }
+// map.on('load', () => {
+//   // Add a circle to the map at New York coordinates
+//   map.addLayer({
+//     'id': 'circle',
+//     'type': 'circle',
+//     'source': {
+//       'type': 'geojson',
+//       'data': {
+//         'type': 'Feature',
+//         'properties': {},
+//         'geometry': {
+//           'type': 'Point',
+//           'coordinates': [-73.98, 40.73] // New York coordinates
+//         }
+//       }
+//     },
+//     'paint': {
+//       'circle-radius': 10,
+//       'circle-color': 'red'
+//     }
+//   });
+// });
+var setPoint = function(planeid,longitude, latitude, summary){
+  new mapboxgl.Marker()
+      .setLngLat([longitude, latitude])
+      .addTo(map);
 
-  
+      const popup = new mapboxgl.Popup({ offset: 25 }).setText(summary);
+
+      // create DOM element for the marker
+      const el = document.createElement('div');
+      el.id = 'marker';
+
+      // create the marker
+      new mapboxgl.Marker(el)
+      .setLngLat([longitude, latitude])
+      .setPopup(popup) // sets a popup on this marker
+      .addTo(map);
+}
