@@ -9,6 +9,10 @@ def index():
   mapboxtoken = api.get_key_mp();
   return render_template('map.html', Mptoken = mapboxtoken)
 
+@app.route('/trends_data')
+def trends():
+  return render_template("trends.html")
+
 @app.route('/summary')
 def summary():
   return "nop"
