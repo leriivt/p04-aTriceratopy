@@ -165,3 +165,21 @@ BrianY -- 2023-05-14 13:00
 --------------------------------------------------------------
 Upadated README for Mapbox API after clearance granted
 ==============================================================
+veritL -- 2023-05-15 02:03
+--------------------------------------------------------------
+Fixed errors in route_to_stops(): changed null to None and accounted
+for a case where a route was an int
+
+Connected app to droplet with address http://198.211.112.224:443/
+There seems to be some weird behavior where if a route involves any 
+functions accessing the database, the following error will appear when
+that route is accessed:
+~~~
+Internal Server Error
+The server encountered an internal error and was unable to complete 
+your request. Either the server is overloaded or there is an error 
+in the application.
+~~~
+Not sure if this only prevents the user from viewing the data returned
+or if this affects the javascript file too.
+==============================================================

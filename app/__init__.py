@@ -14,8 +14,8 @@ def summary():
 @app.route('/coordinates_data')
 def data():
   store_coordinate(1,1,1)
-  #return get_all_coordinates()
-  return "nop"
+  return get_all_coordinates()
+  #return "nop"
 
 #@app.route('/crashes_data')
 
