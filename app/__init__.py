@@ -1,11 +1,13 @@
 from flask import Flask, render_template
 from db import *
+import api
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('map.html')
+  mapboxtoken = api.get_key_mp();
+  return render_template('map.html', Mptoken = mapboxtoken)
 
 @app.route('/summary')
 def summary():

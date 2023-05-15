@@ -7,7 +7,7 @@ var getData = function() {
     })};
 
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoiam9ubmVlZSIsImEiOiJjbGhnajRrY2IwNTl1M2ZuejVoaHF6Z3N4In0.v1HJ4aKSzUZz0cmzdnYbrQ';
+
 
 const map = new mapboxgl.Map({
   container: 'map',
