@@ -9,7 +9,7 @@ def index():
   mapboxtoken = api.get_key_mp();
   return render_template('map.html', Mptoken = mapboxtoken)
 
-@app.route('/trends_data')
+@app.route('/trends')
 def trends():
   return render_template("trends.html")
 
@@ -22,6 +22,10 @@ def data():
   store_coordinate(1,1,1)
   return get_all_coordinates()
   #return "nop"
+
+@app.route('/csv_test')
+def csv():
+  return "Country,Value\nUnited States,12394\nRussia,6148"
 
 #@app.route('/crashes_data')
 

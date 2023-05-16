@@ -14,6 +14,30 @@ var svg = d3.select("#my_dataviz")
 
 var rankings_data;
 
+var test = function() {
+  d3.csv("/csv_test", function(error, data) {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log(data); // Log the loaded data to the console
+    }
+  });
+  
+  //d3.csv('/csv_test');
+}
+
+var test2 = function() {
+  d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum_header.csv", function(error, data) {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log(data); // Log the loaded data to the console
+    }
+  });
+  
+  //d3.csv('/csv_test');
+}
+
 //Read the data
 var getData = function() {
   fetch('/data')

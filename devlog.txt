@@ -183,3 +183,10 @@ in the application.
 Not sure if this only prevents the user from viewing the data returned
 or if this affects the javascript file too.
 ==============================================================
+veritL -- 2023-05-15 23:51
+--------------------------------------------------------------
+Made some tests that tested d3.csv()
+Found that it can access specified Flask routes, and can parse strings 
+in the format of:
+"field0,field1\ndata0,data1\ndata2.data3"
+==============================================================
