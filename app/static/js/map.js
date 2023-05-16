@@ -9,16 +9,17 @@ var getData = function() {
 
 
 async function mapboxkey(){
-  fetch('/mapboxapikey')
-    .then(response => response.text()) // Parse the response body as text
-    .then(data => {
-      console.log(data);
-      return(data);
-    })
+  const response = await fetch('/mapboxapikey');
+  const data = await response.text();
+  console.log(data);
+  return data;
   };
 
-console.log(mapboxkey());
-// const key = await mapboxkey();
+  mapboxkey().then(result => {
+    mapboxgl.accessToken = result;
+  });
+
+// ls// const key = await mapboxkey();
 // mapboxgl.accessToken = key;
 
 
