@@ -8,6 +8,19 @@ var getData = function() {
 
 
 
+async function mapboxkey(){
+  fetch('/mapboxapikey')
+    .then(response => response.text()) // Parse the response body as text
+    .then(data => {
+      console.log(data);
+      return(data);
+    })
+  };
+
+console.log(mapboxkey());
+// const key = await mapboxkey();
+// mapboxgl.accessToken = key;
+
 
 const map = new mapboxgl.Map({
   container: 'map',

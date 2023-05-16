@@ -6,8 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-  mapboxtoken = api.get_key_mp();
-  return render_template('map.html', Mptoken = mapboxtoken)
+  return render_template('map.html')
 
 @app.route('/trends')
 def trends():
@@ -22,6 +21,10 @@ def data():
   store_coordinate(1,1,1)
   return get_all_coordinates()
   #return "nop"
+
+@app.route('/mapboxapikey')
+def mapbox():
+    return api.get_key_mp();
 
 @app.route('/csv_test')
 def csv():
