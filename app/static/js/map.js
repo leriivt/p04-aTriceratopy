@@ -1,5 +1,5 @@
 var getData = function() {
-  fetch('/data')
+  fetch('/coordinates_data')
     .then(response => response.text()) // Parse the response body as text
     .then(data => {
       //add code to store data to a variable
@@ -8,64 +8,51 @@ var getData = function() {
 
 
 
-async function mapboxkey(){
-  const response = await fetch('/mapboxapikey');
-  const data = await response.text();
-  console.log(data);
-  return data;
-  };
+async function generatemap(){
+  var key = '';
+  await fetch('/mapboxapikey')
+    .then(response => response.text())
+    .then(data => {
+      // add code to store data to a variable
+       key = data; // return the data
+    });
+  
+    mapboxgl.accessToken = key;
 
-  mapboxkey().then(result => {
-    mapboxgl.accessToken = result;
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [-73.98, 40.73],
+    zoom: 10
   });
 
-// ls// const key = await mapboxkey();
-// mapboxgl.accessToken = key;
+  var setPoint = function(planeid,longitude, latitude, summary){
+    new mapboxgl.Marker()
+        .setLngLat([longitude, latitude])
+        .addTo(map);
+  
+        const popup = new mapboxgl.Popup({ offset: 25 }).setText(summary);
+  
+        // create DOM element for the marker
+        const el = document.createElement('div');
+        el.id = 'marker';
+  
+        // create the marker
+        new mapboxgl.Marker(el)
+        .setLngLat([longitude, latitude])
+        .setPopup(popup) 
+        .addTo(map);
+  };
 
 
-const map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v11',
-  center: [-73.98, 40.73],
-  zoom: 10
-});
-
-// map.on('load', () => {
-//   // Add a circle to the map at New York coordinates
-//   map.addLayer({
-//     'id': 'circle',
-//     'type': 'circle',
-//     'source': {
-//       'type': 'geojson',
-//       'data': {
-//         'type': 'Feature',
-//         'properties': {},
-//         'geometry': {
-//           'type': 'Point',
-//           'coordinates': [-73.98, 40.73] // New York coordinates
-//         }
-//       }
-//     },
-//     'paint': {
-//       'circle-radius': 10,
-//       'circle-color': 'red'
-//     }
-//   });
-// });
-var setPoint = function(planeid,longitude, latitude, summary){
-  new mapboxgl.Marker()
-      .setLngLat([longitude, latitude])
-      .addTo(map);
-
-      const popup = new mapboxgl.Popup({ offset: 25 }).setText(summary);
-
-      // create DOM element for the marker
-      const el = document.createElement('div');
-      el.id = 'marker';
-
-      // create the marker
-      new mapboxgl.Marker(el)
-      .setLngLat([longitude, latitude])
-      .setPopup(popup) // sets a popup on this marker
-      .addTo(map);
+  return {
+    map: map,
+    setPoint: setPoint
+  };
+  
 }
+
+generatemap().then(result => {
+  result.setPoint('plane1', -74.0, 40.7, 'Marker 1 Summary');
+  result.setPoint('plane2', -73.9, 40.8, 'Marker 2 Summary');
+});
