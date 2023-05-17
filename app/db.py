@@ -132,6 +132,28 @@ def get_time(plane_id):
 
     return time
 
+'''
+def get_(category):
+    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
+    c = db.cursor()
+
+    c.execute("SELECT ? FROM crashes", (category,))
+    all = c.fetchall()
+
+    db.close()
+    return all
+'''
+
+def get_all_dates():
+    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
+    c = db.cursor()
+
+    c.execute("SELECT date FROM crashes")
+    all = c.fetchall()
+
+    db.close()
+    return all
+
 def get_location(plane_id):
     db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
     c = db.cursor()
