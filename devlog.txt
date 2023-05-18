@@ -207,3 +207,12 @@ veritL -- 2023-05-18 01:39
 --------------------------------------------------------------
 added bunch of crash related get_all functions
 ==============================================================
+==============================================================
+prattayD -- 2023-05-18 13:07
+--------------------------------------------------------------
+Emissary Notes:
+- Google Charts seems like a better alternative to D3 charts, docs look much easier to use
+- Possible use of OpenStreet API for the map?
+  - Might be too late to do this
+- Team Amazing Edamame is implemented something very similar to use, would be useful to look fruther into their code
+  - Right now they have a map with points plotted in various places, clicking on the point would show a small popup giving the coordinates of the point.
