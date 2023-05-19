@@ -221,3 +221,7 @@ Emissary Notes:
   - Right now they have a map with points plotted in various places, clicking on the point would show a small popup giving the coordinates of the point.
 - Javascript onload() function may help with passing data from the db into the JS file
 ==============================================================
+veritL -- 2023-05-19 13:12
+--------------------------------------------------------------
+Made forward_geocode() in api.py work for Bing Maps
+==============================================================
