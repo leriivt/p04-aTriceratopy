@@ -96,18 +96,18 @@ veritL -- 2023-05-09 22:33
 
 0. gather the data you pipeline to front-end (potentially converting it to json)
 1. use Flask to return this data to certain route (e.g. '/data')
-    - '/data' acts as a DATA CONDUIT and is form where javascript can 
+    - '/data' acts as a DATA CONDUIT and is form where javascript can
       access the sent data
-2. create a function in the javascript file (e.g. getData()) to access 
+2. create a function in the javascript file (e.g. getData()) to access
    what is being returned to the '/data' route using
-   fetch('/data') followed by more functions like 
-   .then(response => response.text()) or 
+   fetch('/data') followed by more functions like
+   .then(response => response.text()) or
    .then(response => response.json()) to parse the data
 
    and
 
     .then(data => {
-        <A_VARIABLE> = data; 
+        <A_VARIABLE> = data;
         console.log(jsonData); // Log the JSON data to the console
     });
 
@@ -171,13 +171,13 @@ Fixed errors in route_to_stops(): changed null to None and accounted
 for a case where a route was an int
 
 Connected app to droplet with address http://198.211.112.224:443/
-There seems to be some weird behavior where if a route involves any 
+There seems to be some weird behavior where if a route involves any
 functions accessing the database, the following error will appear when
 that route is accessed:
 ~~~
 Internal Server Error
-The server encountered an internal error and was unable to complete 
-your request. Either the server is overloaded or there is an error 
+The server encountered an internal error and was unable to complete
+your request. Either the server is overloaded or there is an error
 in the application.
 ~~~
 Not sure if this only prevents the user from viewing the data returned
@@ -190,13 +190,13 @@ Broke Everything to hide mapbox api (Im sorry)
 veritL -- 2023-05-15 23:51
 --------------------------------------------------------------
 Made some tests that tested d3.csv()
-Found that it can access specified Flask routes, and can parse strings 
+Found that it can access specified Flask routes, and can parse strings
 in the format of:
 "field0,field1\ndata0,data1\ndata2.data3"
 ==============================================================
 BrianY -- 2023-05-16 18:46
 --------------------------------------------------------------
-Back up and working with much cleaner code 
+Back up and working with much cleaner code
 Mapbox api is now hidden
 ==============================================================
 veritL -- 2023-05-17 12:36
@@ -207,6 +207,9 @@ veritL -- 2023-05-18 01:39
 --------------------------------------------------------------
 added bunch of crash related get_all functions
 ==============================================================
+BrianY -- 2023-05-18 13:12
+Sort values handed by /data into a list
+- Maybe find a better way to send data? 
 ==============================================================
 prattayD -- 2023-05-18 13:07
 --------------------------------------------------------------
@@ -217,3 +220,4 @@ Emissary Notes:
 - Team Amazing Edamame is implemented something very similar to use, would be useful to look fruther into their code
   - Right now they have a map with points plotted in various places, clicking on the point would show a small popup giving the coordinates of the point.
 - Javascript onload() function may help with passing data from the db into the JS file
+==============================================================
