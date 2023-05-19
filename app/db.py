@@ -84,9 +84,20 @@ def route_to_stops():
     
     return all_routes
         
-        
+# only for categories within CRASHES table
+def get_all(category):
+    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
+    c = db.cursor() #creates db cursor to execute and fetch  
 
-    
+    c.execute(f"SELECT {category} FROM crashes")
+    everything = c.fetchall()
+    print(everything)
+
+    return everything
+
+reset_database()
+populate_crashes()
+get_all("date")    
 
 
 def get_all_coordinates():
@@ -122,16 +133,6 @@ def get_date(plane_id):
     return date
 
 
-def get_all_dates():
-    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
-    c = db.cursor()
-
-    c.execute("SELECT date FROM crashes")
-    all = c.fetchall()
-
-    db.close()
-    return all
-
 def get_time(plane_id):
     db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
     c = db.cursor()
@@ -143,28 +144,6 @@ def get_time(plane_id):
 
     return time
 
-def get_all_times():
-    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
-    c = db.cursor()
-
-    c.execute("SELECT time FROM crashes")
-    all = c.fetchall()
-
-    db.close()
-    return all
-
-'''
-def get_(category):
-    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
-    c = db.cursor()
-
-    c.execute("SELECT ? FROM crashes", (category,))
-    all = c.fetchall()
-
-    db.close()
-    return all
-'''
-
 def get_location(plane_id):
     db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
     c = db.cursor()
@@ -174,17 +153,6 @@ def get_location(plane_id):
 
     db.close()
 
-def get_all_locations():
-    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
-    c = db.cursor()
-
-    c.execute("SELECT location FROM crashes")
-    all = c.fetchall()
-
-    db.close()
-    return all
-
-    return location
 
 def get_operator(plate_id):
     db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
@@ -197,15 +165,6 @@ def get_operator(plate_id):
 
     return operator
 
-def get_all_operators():
-    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
-    c = db.cursor()
-
-    c.execute("SELECT operator FROM crashes")
-    all = c.fetchall()
-
-    db.close()
-    return all
 
 def get_model(plane_id):
     db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
@@ -218,15 +177,6 @@ def get_model(plane_id):
 
     return model
 
-def get_all_models():
-    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
-    c = db.cursor()
-
-    c.execute("SELECT model FROM crashes")
-    all = c.fetchall()
-
-    db.close()
-    return all
 
 def get_crew(plane_id):
     db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
@@ -260,16 +210,6 @@ def get_fatalities(plane_id):
     db.close()
 
     return fatalities
-
-def get_all_fatalities():
-    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
-    c = db.cursor()
-
-    c.execute("SELECT fatalities FROM crashes")
-    all = c.fetchall()
-
-    db.close()
-    return all
 
 def get_ground(plane_id):
     db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
