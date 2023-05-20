@@ -29,7 +29,7 @@ def populate_crashes():
     db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
     c = db.cursor() #creates db cursor to execute and fetch      
 
-    with open(CSV_FILE, "r") as crashes_csv:
+    with open(CSV_FILE, "r",encoding="utf-8") as crashes_csv:
         reader = csv.DictReader(crashes_csv)
         id = 0
         for row in reader:
@@ -74,8 +74,6 @@ def route_to_stops():
 
     for row in routes:
         route = row[0]
-        #print(route)
-        #print(type(route))
         if route == None or type(route) == int or route.count(' - ') == 0:
             all_routes[id] = None
         else:
@@ -92,13 +90,13 @@ def get_all(category):
 
     c.execute(f"SELECT {category} FROM crashes")
     everything = c.fetchall()
-    print(everything)
+    #print(everything)
 
     return everything
 
-reset_database()
-populate_crashes()
-get_all("date")    
+# reset_database()
+# populate_crashes()
+# get_all("date")    
 
 
 def get_all_coordinates():
@@ -107,7 +105,7 @@ def get_all_coordinates():
 
     c.execute("SELECT * FROM coordinates")
     everything = c.fetchall()
-    print(everything)
+
 
     return everything
 
