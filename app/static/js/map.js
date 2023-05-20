@@ -1,13 +1,3 @@
-var getData = function() {
-  fetch('/coordinates_data')
-    .then(response => response.text()) // Parse the response body as text
-    .then(data => {
-      //add code to store data to a variable
-      console.log(data); // Log the string data to the console
-    })};
-
-
-
 async function generatemap(){
   var key = '';
   await fetch('/mapboxapikey')
@@ -15,6 +5,12 @@ async function generatemap(){
     .then(data => {
       // add code to store data to a variable
        key = data; // return the data
+    });
+    var listCoords = []; 
+    await fetch('/coordinates_data')
+    .then(response => response.text()) // Parse the response body as text
+    .then(data => {
+      list = JSON.parse(data); //list is arr object
     });
   
     mapboxgl.accessToken = key;
