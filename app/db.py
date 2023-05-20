@@ -18,7 +18,7 @@ def reset_database():
 
     #crashes table stores crash info (has 13 cols)
     c.execute("CREATE TABLE IF NOT EXISTS crashes(id INTEGER, date STRING, time STRING, location STRING, operator STRING, route STRING, model STRING, crew INTEGER, passengers INTEGER, fatalities INTEGER, ground INTEGER, summary STRING);")
-    c.execute("CREATE TABLE IF NOT EXISTS coordinates(id INTEGER, longitude FLOAT, latitude FLOAT);")
+    c.execute("CREATE TABLE IF NOT EXISTS coordinates(id INTEGER, latitude FLOAT, longitude FLOAT);")
     c.execute("CREATE TABLE IF NOT EXISTS rankings(item STRING, category STRING, rank INTEGER, number_of INTEGER);")
 
     db.commit()
@@ -108,6 +108,8 @@ def get_all_coordinates():
 
 
     return everything
+
+print(get_all_coordinates())
 
 def get_all_crashes():
     db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
@@ -222,8 +224,8 @@ def get_ground(plane_id):
     return ground
 #get functions for crashes table end ^^^
 
-def store_coordinate(plane_id, longitude, latitude):
-    data = (plane_id, longitude, latitude)
+def store_coordinate(plane_id, latitude, longitude):
+    data = (plane_id, latitude, longitude)
     db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
     c = db.cursor()
 

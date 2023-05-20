@@ -18,7 +18,7 @@ def summary():
 
 @app.route('/coordinates_data')
 def data():
-  store_coordinate(1,1,1)
+  #store_coordinate(1,1,1)
   return get_all_coordinates()
   #return "nop"
 

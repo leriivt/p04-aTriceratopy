@@ -237,3 +237,8 @@ veritL -- 2023-05--20 14:16
   just for manually reseting/populating the database
 - Added a try, except to forward_geocode() for invalid locations
 ==============================================================
+veritL -- 2023-05--20 15:50
+--------------------------------------------------------------
+Realized that the names of the cols in the coordinates table 
+for latitude and longitude were flipped, made it right
+==============================================================
