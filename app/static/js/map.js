@@ -44,7 +44,7 @@ async function generatemap() {
       .setLngLat([latitude, longitude])
       .addTo(map);
 
-    const popup = new mapboxgl.Popup({ offset: 25 }).setText(summary);
+    const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(summary);
 
     // create DOM element for the marker
     const el = document.createElement('div');
@@ -70,27 +70,33 @@ async function generatemap() {
   };
 
 }
+//Set Up range slider at leftmost
+const rang = document.getElementById('timeperiod');
+rang.value = rang.min;
+updateValue(rang.value) 
 
 //Updating range slider
 function updateValue(value) {
   const timeperiod = document.getElementById('peroid');
   timeperiod.textContent = `${value}s`;
 
-    //plotting points
-  generatemap().then(result => {
-
-    // console.log(Number(result.crash[i][1].slice(-4)));
-  i = 0; 
-  while(Number(result.crash[i][1].slice(-4)) < Number(rang.value)+10){ // && Number(result.crash[i][1].slice(-4)) > Number(rang.value) NEED to change 
-    result.setPoint(String(result.listCoords[i][0]), result.listCoords[i][2], result.listCoords[i][1], result.crash[i][11]);
-    i++;
+  const rang = document.getElementById('timeperiod');
+  console.log(Number(rang.value) + 10)
+  if( 1915 < (Number(rang.value)+10) ) {
+    console.log(true);
   }
-
+  if( 1915 >= Number(rang.value)) {
+    console.log(true);
+  }
+  generatemap().then(result => {
+    for(i = 0; i < result.crash.length; i++){
+      if(Number(result.crash[i][1].slice(-4)) < (Number(rang.value)+10) && Number(result.crash[i][1].slice(-4)) >= Number(rang.value)){
+        summary = result.crash[i][1] + "<br>" + result.crash[i][2] + "<br>" + result.crash[i][11];
+        result.setPoint(String(result.listCoords[i][0]), result.listCoords[i][2], result.listCoords[i][1], summary);
+      }
+    }
   });
 }
 
-//Set Up range slider at leftmost
-const rang = document.getElementById('timeperiod');
-rang.value = rang.min;
-updateValue(rang.value)
+
 
