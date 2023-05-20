@@ -109,7 +109,7 @@ def get_all_coordinates():
 
     return everything
 
-print(get_all_coordinates())
+#print(get_all_coordinates())
 
 def get_all_crashes():
     db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
