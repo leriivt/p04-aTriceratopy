@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import json
 from db import *
 import api
 
@@ -12,10 +13,6 @@ def index():
 def trends():
   return render_template("trends.html")
 
-@app.route('/summary')
-def summary():
-  return "nop"
-
 @app.route('/coordinates_data')
 def data():
   return get_all_coordinates()
@@ -26,11 +23,30 @@ def crash():
 
 @app.route('/mapboxapikey')
 def mapbox():
-    return api.get_key_mp();
+    return api.get_key_mp()
 
-@app.route('/csv_test')
-def csv():
-  return "Country,Value\nUnited States,12394\nRussia,6148"
+@app.route('/summary/<planeid>')
+def summary(planeid):
+  planeid = int(planeid)
+  date = get_all_crashes()[planeid][1]
+  time = get_all_crashes()[planeid][2]
+  location = get_all_crashes()[planeid][3]
+  operator = get_all_crashes()[planeid][4]
+  route = get_all_crashes()[planeid][5]
+  ACtype = get_all_crashes()[planeid][6]
+  crew = get_all_crashes()[planeid][7]
+  passengers = get_all_crashes()[planeid][8]
+  fatalities = get_all_crashes()[planeid][9]
+  ground = get_all_crashes()[planeid][10]
+  summary = get_all_crashes()[planeid][11]
+
+  #print( get_all_crashes()[planeid])
+
+
+
+  # status = 200  # Replace with the desired HTTP status code
+  # headers = {'Content-Type': 'text/plain'}  # Replace with any necessary headers
+  return render_template('Summary.html', date = date, time = time, location = location, operator= operator, route = route, ACtype = ACtype, crew = crew, passengers = passengers, fatalities = fatalities, ground = ground, summary = summary)
 
 #@app.route('/crashes_data')
 
