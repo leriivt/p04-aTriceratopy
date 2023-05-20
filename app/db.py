@@ -2,7 +2,7 @@
 
 import sqlite3
 import csv
-#from api import *
+from api import *
 
 DB_FILE = "airplane.db"
 CSV_FILE = "Airplane_Crashes_and_Fatalities_Since_1908_20190820105639.csv"
@@ -47,16 +47,17 @@ def populate_all_coordinates():
     locations = c.fetchall()
     #print(locations)
     id = 0
-    latitude = 0
-    longitude = 0
 
     for row in locations:
-        #store_coordinate(id, latitude, longitude)
-        data = (id, latitude, longitude)
+        location = row[0]
+        coordinates = forward_geocode(location)
+        print(location)
+        print(coordinates)
+        data = (id, coordinates[0], coordinates[1])
+
         c.execute("INSERT INTO coordinates VALUES(?, ?, ?)", data)
         id += 1
-        latitude += 1
-        longitude += 1
+    print("finished! (finally)")
     
     db.commit()
     db.close()

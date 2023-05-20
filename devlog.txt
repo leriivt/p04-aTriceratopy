@@ -230,3 +230,10 @@ prattayD -- 2023-05-18 13:07
 - Updated db to cleaner and simplified code
 - Continued working on rank.py
 ==============================================================
+veritL -- 2023-05--20 14:16
+--------------------------------------------------------------
+- populate_all_coordinates() now works
+  It takes about 25 min to finish so make a new reset.py file
+  just for manually reseting/populating the database
+- Added a try, except to forward_geocode() for invalid locations
+==============================================================

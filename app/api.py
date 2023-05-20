@@ -17,7 +17,10 @@ def forward_geocode(location):
     res = requests.get(f"http://dev.virtualearth.net/REST/v1/Locations?query={location}&key={get_key_bing()}")
     json = res.json()
     #print(json)
-    return json["resourceSets"][0]["resources"][0]["point"]["coordinates"]
+    try:
+        return json["resourceSets"][0]["resources"][0]["point"]["coordinates"]
+    except:
+        return [None, None]
 
 print(forward_geocode("New York, New York"))
 '''

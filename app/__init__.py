@@ -37,10 +37,8 @@ def csv():
 if __name__ == '__main__':
   app.debug = True
   app.run()
-  reset_database()
-  populate_crashes()
-  populate_all_coordinates()
+  #reset_database()
+  #populate_crashes()
+  #populate_all_coordinates()
   route_to_stops()
-  #print(get_("date"))
-  print(get_date(1))
-  print(get_all_dates())
+  #print(get_date(1))
