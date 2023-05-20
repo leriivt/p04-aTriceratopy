@@ -12,11 +12,14 @@
     </style>
   </head>
   <body>
-    <div class="container">
+    <div class="container text-center">
       <div class="row">
         <div class="col">
-          <label for="customRange1" class="form-label">Time Period</label>
-          <input type="range" class="form-range" id="customRange1">
+
+          
+          <input type="range" class="form-range" id="timeperiod" min="1900" max="2010" step="10" oninput="updateValue(this.value)">
+          <p id="peroid">1900</p>
+
         </div>
       </div>
       <div class="row">
