@@ -45,7 +45,7 @@ def summary(planeid):
   ground = get_all_crashes()[planeid][10]
   summary = get_all_crashes()[planeid][11]
 
-  return render_template('Summary.html', date = date, time = time, location = location, operator= operator, route = route, ACtype = ACtype, crew = crew, passengers = passengers, fatalities = fatalities, ground = ground, summary = summary)
+  return render_template('summary.html', date = date, time = time, location = location, operator= operator, route = route, ACtype = ACtype, crew = crew, passengers = passengers, fatalities = fatalities, ground = ground, summary = summary)
 
 if __name__ == '__main__':
   app.debug = True

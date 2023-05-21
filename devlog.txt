@@ -249,3 +249,7 @@ Added crashes to the map and created a bootstrap slider to place markers per dec
 Added new route to all crashes to fetch information not given by coordinates route
 Added sumnmary page with all the extended info about crash
 ==============================================================
+veritL -- 2023-05--21 16:44
+--------------------------------------------------------------
+Fixed typo in __init__ that referenced Summary.html instead of summary.html
+==============================================================
