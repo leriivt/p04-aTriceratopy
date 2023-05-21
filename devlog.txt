@@ -242,3 +242,10 @@ veritL -- 2023-05--20 15:50
 Realized that the names of the cols in the coordinates table 
 for latitude and longitude were flipped, made it right
 ==============================================================
+BrianY -- 2023-05--20 18:30
+--------------------------------------------------------------
+A list of things I did today: 
+Added crashes to the map and created a bootstrap slider to place markers per decade to avoid clutter
+Added new route to all crashes to fetch information not given by coordinates route
+Added sumnmary page with all the extended info about crash
+==============================================================
