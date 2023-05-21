@@ -34,12 +34,17 @@ async function generatemap() {
   const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
-    center: [-73.98, 40.73],
-    zoom: 1
+    center: [-74.0138, 40.7180],
+    zoom: 19
+
   });
 
   var setPoint = function (planeid, latitude, longitude, summary) {
+    //bad way to set offset?
+    latitude += (Math.random() * .0001);
+    longitude += (Math.random() * .0001);
     try{
+
       new mapboxgl.Marker()
       .setLngLat([latitude, longitude])
       .addTo(map);
@@ -84,12 +89,12 @@ function updateValue(value) {
 
   generatemap().then(result => {
     for(i = 0; i < result.crash.length; i++){
-      if(Number(result.crash[i][1].slice(-4)) < (Number(rang.value)+2) && Number(result.crash[i][1].slice(-4)) >= Number(rang.value)){
+      if(Number(result.crash[i][1].slice(-4)) < (Number(rang.value)+10) && Number(result.crash[i][1].slice(-4)) >= Number(rang.value)){
         var link = 'summary/'+ i;
         var summary = result.crash[i][1] + "<br>" + result.crash[i][2] + "<br>" + result.crash[i][11] + "<br>" + "<a href=" + link + ">extended info </a>";
         result.setPoint(String(result.listCoords[i][0]), result.listCoords[i][2], result.listCoords[i][1], summary);
       }
     }
   });
-  sleep(2);
+  
 }
