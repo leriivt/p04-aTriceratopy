@@ -89,10 +89,13 @@ def get_all(category):
     c = db.cursor() #creates db cursor to execute and fetch  
 
     c.execute(f"SELECT {category} FROM crashes")
-    everything = c.fetchall()
-    #print(everything)
+    list_tuple = c.fetchall()
+    list_strings = [''.join(i) for i in list_tuple]
 
-    return everything
+    #print(list_strings)
+    db.close()
+
+    return list_strings
 
 # reset_database()
 # populate_crashes()
@@ -106,6 +109,7 @@ def get_all_coordinates():
     c.execute("SELECT * FROM coordinates")
     everything = c.fetchall()
 
+    db.close()
 
     return everything
 
@@ -117,6 +121,8 @@ def get_all_crashes():
 
     c.execute("SELECT * FROM crashes")
     everything = c.fetchall()
+
+    db.close()
 
     return everything
 
