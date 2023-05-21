@@ -40,23 +40,9 @@ def summary(planeid):
   ground = get_all_crashes()[planeid][10]
   summary = get_all_crashes()[planeid][11]
 
-  #print( get_all_crashes()[planeid])
-
-
-
-  # status = 200  # Replace with the desired HTTP status code
-  # headers = {'Content-Type': 'text/plain'}  # Replace with any necessary headers
   return render_template('Summary.html', date = date, time = time, location = location, operator= operator, route = route, ACtype = ACtype, crew = crew, passengers = passengers, fatalities = fatalities, ground = ground, summary = summary)
-
-#@app.route('/crashes_data')
-
-
 
 if __name__ == '__main__':
   app.debug = True
   app.run()
-  #reset_database()
-  #populate_crashes()
-  #populate_all_coordinates()
-  route_to_stops()
-  #print(get_date(1))
+  route_to_stops() #What is this doing? RAAH
