@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>MAPx</title>
+    <title>MAP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet" />
@@ -17,7 +17,7 @@
         <div class="col">
 
           
-          <input type="range" class="form-range" id="timeperiod" min="1900" max="2010" step="10" oninput="updateValue(this.value)">
+          <input type="range" class="form-range" id="timeperiod" min="1900" max="2010" step="2" onchange="updateValue(this.value)">
           <p id="peroid">1900</p>
 
         </div>

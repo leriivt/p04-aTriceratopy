@@ -81,22 +81,15 @@ function updateValue(value) {
   timeperiod.textContent = `${value}s`;
 
   const rang = document.getElementById('timeperiod');
-  console.log(Number(rang.value) + 10)
-  if( 1915 < (Number(rang.value)+10) ) {
-    console.log(true);
-  }
-  if( 1915 >= Number(rang.value)) {
-    console.log(true);
-  }
+
   generatemap().then(result => {
     for(i = 0; i < result.crash.length; i++){
-      if(Number(result.crash[i][1].slice(-4)) < (Number(rang.value)+10) && Number(result.crash[i][1].slice(-4)) >= Number(rang.value)){
-        summary = result.crash[i][1] + "<br>" + result.crash[i][2] + "<br>" + result.crash[i][11];
+      if(Number(result.crash[i][1].slice(-4)) < (Number(rang.value)+2) && Number(result.crash[i][1].slice(-4)) >= Number(rang.value)){
+        var link = 'summary/'+ i;
+        var summary = result.crash[i][1] + "<br>" + result.crash[i][2] + "<br>" + result.crash[i][11] + "<br>" + "<a href=" + link + ">extended info </a>";
         result.setPoint(String(result.listCoords[i][0]), result.listCoords[i][2], result.listCoords[i][1], summary);
       }
     }
   });
+  sleep(2);
 }
-
-
-
