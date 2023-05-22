@@ -90,17 +90,25 @@ def get_all(category):
 
     c.execute(f"SELECT {category} FROM crashes")
     list_tuple = c.fetchall()
+
+    #print(list_strings)
+    db.close()
+
+    return list_tuple
+
+def get_all_strings(category):
+    db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
+    c = db.cursor() #creates db cursor to execute and fetch  
+
+    c.execute(f"SELECT {category} FROM crashes")
+    list_tuple = c.fetchall()
     list_strings = [''.join(str(i)) for i in list_tuple]
 
     #print(list_strings)
     db.close()
 
     return list_strings
-
-# reset_database()
-# populate_crashes()
-# get_all("date")    
-
+    
 
 def get_all_coordinates():
     db = sqlite3.connect(DB_FILE) #open if file exists, if not it will create a new db 
