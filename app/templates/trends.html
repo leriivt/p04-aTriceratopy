@@ -2,30 +2,48 @@
 <html>
     <meta charset="utf-8">
     <title> Trends </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <head>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
           google.charts.load('current', {'packages':['corechart']});
           google.charts.setOnLoadCallback(drawChart);
+
+          async function getData() {
+            try {
+              await fetch('/rank_data')
+                .then(response => response.text()) // Parse the response body as text
+                .then(data => {
+                  crashes_by_decade = JSON.parse(data); // arr object
+                  console.log(crashes_by_decade)
+                  return crashes_by_decade
+                });
+            } catch {
+              console.log("Data not present");
+            }
+          }
+          
     
           function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-              ['Year', 'Sales', 'Expenses'],
-              ['2004',  1000,      400],
-              ['2005',  1170,      460],
-              ['2006',  660,       1120],
-              ['2007',  1030,      540]
-            ]);
+            
+            var chart_data = google.visualization.arrayToDataTable( [['Decade', 'Crashes'], [1910, 33], [1920, 182], [1930, 357], [1940, 578], [1950, 649], [1960, 636], [1970, 612], [1980, 552], [1990, 631], [2000, 506], [2010, 231]] );
     
             var options = {
               title: 'Crashes by Decade',
               curveType: 'function',
-              legend: { position: 'bottom' }
+              legend: { position: 'bottom' },
+              axisTitlesPosition:'out' ,
+              vAxis: { title: 'Number of Crashes' },
+              hAxis: {
+                title: 'Decade',
+                format: '####'
+              }
             };
     
             var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
     
-            chart.draw(data, options);
+            chart.draw(chart_data, options);
           }
         </script>
       </head>
