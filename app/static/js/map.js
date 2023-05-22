@@ -75,6 +75,17 @@ async function generatemap() {
   };
 
 }
+
+var incr = 10;
+
+function undateincr(value){
+  const increment = document.getElementById('increment');
+  incr = Number(`${value}`);
+  const timep = document.getElementById("timeperiod");
+  timep.setAttribute("step", incr);
+  console.log(incr);
+}
+
 //Set Up range slider at leftmost
 const rang = document.getElementById('timeperiod');
 rang.value = rang.min;
@@ -88,8 +99,8 @@ function updateValue(value) {
   const rang = document.getElementById('timeperiod');
 
   generatemap().then(result => {
-    for(i = 0; i < result.crash.length; i++){
-      if(Number(result.crash[i][1].slice(-4)) < (Number(rang.value)+10) && Number(result.crash[i][1].slice(-4)) >= Number(rang.value)){
+    for(i = 0; i < result.crash.length; i++){ //change this +10 should be changed
+      if(Number(result.crash[i][1].slice(-4)) < (Number(rang.value)+incr) && Number(result.crash[i][1].slice(-4)) >= Number(rang.value)){
         var link = 'summary/'+ i;
         var summary = result.crash[i][1] + "<br>" + result.crash[i][2] + "<br>" + result.crash[i][11] + "<br>" + "<a href=" + link + ">extended info </a>";
         result.setPoint(String(result.listCoords[i][0]), result.listCoords[i][2], result.listCoords[i][1], summary);
