@@ -90,7 +90,7 @@ def get_all(category):
 
     c.execute(f"SELECT {category} FROM crashes")
     list_tuple = c.fetchall()
-    list_strings = [''.join(i) for i in list_tuple]
+    list_strings = [''.join(str(i)) for i in list_tuple]
 
     #print(list_strings)
     db.close()

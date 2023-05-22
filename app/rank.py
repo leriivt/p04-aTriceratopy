@@ -28,12 +28,27 @@ def crashes_by_decade():
         for i in range(1,12):
             if data_array[i][0] == decade:
                 data_array[i][1] += 1
-
-    return data_array 
-    
+    return data_array
 
 # print(crashes_by_decade())
 # [['Decade', 'Crashes'], [1910, 33], [1920, 182], [1930, 357], [1940, 578], [1950, 649], [1960, 636], [1970, 612], [1980, 552], [1990, 631], [2000, 506], [2010, 231]]
+
+# def summary_statistics():
+#     crashes = get_all("id")
+#     fatalities = get_all("fatalities")
+#     # print(fatalities)
+#     # print(fatalities[22][1:3])
+    
+
+#     total_crashes = len(crashes) - 1
+#     total_fatalities = 0
+#     for i in fatalities:
+#         total_fatalities += int(i)
+
+# summary_statistics()
+
+
+
 
 
 
