@@ -76,7 +76,7 @@ async function generatemap() {
 
 }
 
-var incr = 10;
+var incr = 10; //default increment is by decade
 
 function undateincr(value){
   const increment = document.getElementById('increment');
