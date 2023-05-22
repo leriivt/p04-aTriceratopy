@@ -35,7 +35,7 @@ async function generatemap() {
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
     center: [-74.0138, 40.7180],
-    zoom: 19
+    zoom: 1
 
   });
 
