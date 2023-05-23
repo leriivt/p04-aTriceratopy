@@ -10,25 +10,41 @@
           google.charts.load('current', {'packages':['corechart']});
           google.charts.setOnLoadCallback(drawChart);
 
-          async function getLineData() {
+          async function getData() {
             try {
-              await fetch('/decade_data')
+              await fetch('/crashes_data')
                 .then(response => response.text()) // Parse the response body as text
                 .then(data => {
-                  crashes_by_decade = JSON.parse(data); // arr object
-                  console.log(crashes_by_decade)
-                  return crashes_by_decade
+                  crash = JSON.parse(data); // arr object
+                  console.log(crash);
+                  return crash;
                 });
             } catch {
               console.log("Data not present");
             }
           }
+
+          // getData().then(result => {
+          //   var crashes_array = ['Decade', 'Crashes'];
+          //   for (int i = 1; i < 12; i++){
+          //     crashes_array[i][0] = 1910 + ((i-1)*10);
+          //   }
+            
+          //   var year = 0;
+          //   var decade = 0;
+          //   for (int i = 0; i < result.crash.length; i++){
+          //     year = Number( crashes[i][1].substring( crashes[i][1].length() ) );
+          //     decade = year - (year % 10);
+          //   }
+
+          //   for 
+          // }
           
     
           function drawChart() {
             
             var chart_data = google.visualization.arrayToDataTable( [['Decade', 'Crashes'], [1910, 33], [1920, 182], [1930, 357], [1940, 578], [1950, 649], [1960, 636], [1970, 612], [1980, 552], [1990, 631], [2000, 506], [2010, 231]] );
-    
+            
             var options = {
               title: 'Crashes by Decade',
               curveType: 'function',
