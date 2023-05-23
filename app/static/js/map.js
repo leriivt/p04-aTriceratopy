@@ -83,7 +83,9 @@ function undateincr(value){
   incr = Number(`${value}`);
   const timep = document.getElementById("timeperiod");
   timep.setAttribute("step", incr);
-  console.log(incr);
+  //updates the map everytime the inerval is changed | I don't know how I did it but its working great
+  val = document.getElementById('timeperiod').value; 
+  updateValue(val);
 }
 
 //Set Up range slider at leftmost
@@ -94,18 +96,51 @@ updateValue(rang.value)
 //Updating range slider
 function updateValue(value) {
   const timeperiod = document.getElementById('peroid');
-  timeperiod.textContent = `${value}s`;
+  
+  timeperiod.textContent = `${value}s - ${Number(value) + incr}`;
+
+  const rangestats = document.getElementById('statsfrom');
+  rangestats.textContent = "Stats of " + `${value}s - ${Number(value) + incr}`;
 
   const rang = document.getElementById('timeperiod');
+
+  var numcrash = 0;
+  var numfatalities = 0;
+  var numsurivors = 0; 
+  var numpeople = 0;
 
   generatemap().then(result => {
     for(i = 0; i < result.crash.length; i++){ //change this +10 should be changed
       if(Number(result.crash[i][1].slice(-4)) < (Number(rang.value)+incr) && Number(result.crash[i][1].slice(-4)) >= Number(rang.value)){
+        numcrash+= 1;
+        if(result.crash[i][9] != "NULL"){
+          numfatalities += Number(result.crash[i][9]);
+        }
+        if(result.crash[i][7] != "NULL"){
+          numpeople += Number(result.crash[i][7])
+        }
+        if(result.crash[i][8] != "NULL"){
+          numpeople += Number(result.crash[i][8]);
+        }
+
+        
+
         var link = 'summary/'+ i;
         var summary = result.crash[i][1] + "<br>" + result.crash[i][2] + "<br>" + result.crash[i][11] + "<br>" + "<a href=" + link + ">extended info </a>";
         result.setPoint(String(result.listCoords[i][0]), result.listCoords[i][2], result.listCoords[i][1], summary);
       }
     }
+    const crash = document.getElementById('crashes');
+    crash.textContent = numcrash;
+    const fata = document.getElementById('fatalities');
+    fata.textContent = numfatalities;
+    const people = document.getElementById('totalP');
+    people.textContent = numpeople;
+    const survive = document.getElementById('surivors')
+    numsurivors = (numpeople - numfatalities);
+    survive.textContent = numsurivors;
+
+
   });
   
 }
