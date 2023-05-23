@@ -66,7 +66,6 @@ async function generatemap() {
 
   };
 
-
   return {
     map: map,
     listCoords: listCoords,
@@ -139,8 +138,6 @@ function updateValue(value) {
     const survive = document.getElementById('surivors')
     numsurivors = (numpeople - numfatalities);
     survive.textContent = numsurivors;
-
-
   });
   
 }

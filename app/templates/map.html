@@ -16,18 +16,10 @@
 <body>
   <div class="container text-center">
     <div class="row">
-      <div class="col">
-        <h2>Aeroplano Graveyardo</h2>
-        <input type="range" class="form-range" id="timeperiod" min="1900" max="2010" step="10"
-          onchange="updateValue(this.value)">
-        <p id="peroid">1900</p>
-      </div>
+      <h2>Aeroplano Graveyardo</h2>
     </div>
     <div class="row">
-
-      <div class="col">
-        <div id="map">
-          <!-- <script src="../static/js/map.js"></script> -->
+      <div class="col"><div id="map">
         </div>
       </div>
       <div class="col-md-2">
@@ -50,7 +42,7 @@
             <tr>
               <th scope="col">Fatalities</th>
               <td id="fatalities"></td>
-          </tr>
+            </tr>
             <tr>
               <th scope="col">Survivors</th>
               <td id="surivors"></td>
@@ -63,6 +55,13 @@
         </table>
         <br>
         <a href="/trends" class="btn btn-primary btn-lg">Trends Page</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <input type="range" class="form-range" id="timeperiod" min="1900" max="2010" step="10"
+          onchange="updateValue(this.value)">
+        <b id="peroid">1900</b>
       </div>
     </div>
   </div>
