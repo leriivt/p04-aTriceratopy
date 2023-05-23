@@ -62,7 +62,7 @@
                   .then(response => response.text()) // Parse the response body as text
                   .then(data => {
                     fatalities = JSON.parse(data); // arr object
-                    console.log(crashes_by_decade)
+                    console.log(fatalities)
                     return fatalities
                   });
               } catch {
@@ -76,7 +76,7 @@
               data.addColumn('number', 'ID');
               data.addColumn('string', 'Date');
               data.addColumn('number', 'Fatalities');
-              data.addRows(getFatalitiesData());
+              data.addRows( getFatalitiesData() );
   
               var options = {
                  showRowNumber: true,

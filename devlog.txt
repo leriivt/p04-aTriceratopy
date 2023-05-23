@@ -249,6 +249,10 @@ Added crashes to the map and created a bootstrap slider to place markers per dec
 Added new route to all crashes to fetch information not given by coordinates route
 Added sumnmary page with all the extended info about crash
 ==============================================================
+prattayD -- 2023-05-21 19:00
+--------------------------------------------------------------
+Worked on rank.py and trends.html and getting the first line chart done
+==============================================================
 veritL -- 2023-05--21 16:44
 --------------------------------------------------------------
 Fixed typo in __init__ that referenced Summary.html instead of summary.html
@@ -261,4 +265,9 @@ BrianY -- 2023-05--22 22:30
 --------------------------------------------------------------
 Added stats to the side of the map
 Added a button that directs the user to the trend page
+==============================================================
+prattayD -- 2023-05-22 23:48
+--------------------------------------------------------------
+Worked on rank.py and trends.html and getting the fatalities table done
+Roadblocked by the same problem of JS not recognizing data as an array even after parsing
 ==============================================================

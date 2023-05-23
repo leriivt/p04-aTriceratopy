@@ -18,7 +18,7 @@ def crashes_by_decade():
         data_array[i][0] = 1910 + ((i-1)*10)
 
     dates = get_all("date")
-    print(dates)
+    # print(dates)
     row = 0
     for i in dates:
         # cuts the date to just the year
@@ -32,36 +32,26 @@ def crashes_by_decade():
     # print(type(data_array)) 
     return data_array
 
-print(crashes_by_decade())
+# print(crashes_by_decade())
 # [['Decade', 'Crashes'], [1910, 33], [1920, 182], [1930, 357], [1940, 578], [1950, 649], [1960, 636], [1970, 612], [1980, 552], [1990, 631], [2000, 506], [2010, 231]]
 
-# def most_fatalities():
-#     data_list = []
+def most_fatalities():
+    ids = get_all("id")
+    dates = get_all("date")
+    fatalities = get_all("fatalities")
 
-#     ids = get_all("id")
-#     dates = get_all("date")
-#     fatalities = get_all("fatalities")
+    length = len(ids)
+    data_array = [ [0] * 3 for i in range(length) ]
 
-#     length = len(ids)
-#     i = 0
-#     while i < length:
-#         data_list.append( [ids[i][0], int(dates[i][0][-4:]), fatalities[i][0]] )
-#         i += 1
-#     # print(data_list)
-#     print(type(data_list))
-#     data_array = array("i", data_list)
-#     print(type(data_array))
-#     return data_list
+    i = 0
+    while i < length:
+        data_array[i][0] = ids[i][0]
+        data_array[i][1] = int(dates[i][0][-4:])
+        data_array[i][2] = fatalities[i][0]
+        i += 1
+    
+    # print(data_array)
+    return data_array
 
-
-# most_fatalities()
-
-
-
-
-
-
-# #create a dict with all operators
-# def blank_by_operator(category):
-#     return null
+most_fatalities()
 
