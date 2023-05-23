@@ -1,4 +1,5 @@
 from db import *
+from array import array
 
 def search(key, min, max):
     while (min <= max):
@@ -16,39 +17,51 @@ def crashes_by_decade():
     for i in range(1,12):
         data_array[i][0] = 1910 + ((i-1)*10)
 
-    dates = get_all_strings("date")
-    # print(dates)
+    dates = get_all("date")
+    print(dates)
     row = 0
     for i in dates:
         # cuts the date to just the year
-        year = int(i[-4:])
+        year = int(i[0][-4:])
         # matches the year with the decade it falls in
         decade = search(year, 1910, 1920)
         # increments the decade's plane crash count by 1 in the array
         for i in range(1,12):
             if data_array[i][0] == decade:
                 data_array[i][1] += 1
+    # print(type(data_array)) 
     return data_array
 
-# print(crashes_by_decade())
+print(crashes_by_decade())
 # [['Decade', 'Crashes'], [1910, 33], [1920, 182], [1930, 357], [1940, 578], [1950, 649], [1960, 636], [1970, 612], [1980, 552], [1990, 631], [2000, 506], [2010, 231]]
 
-def most_fatalities():
-    data_array = [][]
-    ids = get_all("id")
-    dates = get_all("date")
-    fatalities = get_all("fatalities")
-    print(fatalities)
+# def most_fatalities():
+#     data_list = []
+
+#     ids = get_all("id")
+#     dates = get_all("date")
+#     fatalities = get_all("fatalities")
+
+#     length = len(ids)
+#     i = 0
+#     while i < length:
+#         data_list.append( [ids[i][0], int(dates[i][0][-4:]), fatalities[i][0]] )
+#         i += 1
+#     # print(data_list)
+#     print(type(data_list))
+#     data_array = array("i", data_list)
+#     print(type(data_array))
+#     return data_list
 
 
-most_fatalities()
+# most_fatalities()
 
 
 
 
 
 
-#create a dict with all operators
-def blank_by_operator(category):
-    return null
+# #create a dict with all operators
+# def blank_by_operator(category):
+#     return null
 

@@ -10,9 +10,9 @@
           google.charts.load('current', {'packages':['corechart']});
           google.charts.setOnLoadCallback(drawChart);
 
-          async function getData() {
+          async function getLineData() {
             try {
-              await fetch('/rank_data')
+              await fetch('/decade_data')
                 .then(response => response.text()) // Parse the response body as text
                 .then(data => {
                   crashes_by_decade = JSON.parse(data); // arr object
@@ -46,9 +46,50 @@
             chart.draw(chart_data, options);
           }
         </script>
+        <script type = "text/javascript">
+          google.charts.load('current', {packages: ['table']});     
+        </script>
       </head>
       <body>
         <div id="curve_chart" style="width: 900px; height: 500px"></div>
+
+        <div id = "container" style = "width: 550px; height: 400px; margin: 0 auto">
+        </div>
+        <script language = "JavaScript">
+            async function getFatalitiesData() {
+              try {
+                await fetch('/fatalities_data')
+                  .then(response => response.text()) // Parse the response body as text
+                  .then(data => {
+                    fatalities = JSON.parse(data); // arr object
+                    console.log(crashes_by_decade)
+                    return fatalities
+                  });
+              } catch {
+                console.log("Data not present");
+              }
+            }
+
+           function drawChart() {
+              // Define the chart to be drawn.
+              var data = new google.visualization.DataTable();
+              data.addColumn('number', 'ID');
+              data.addColumn('string', 'Date');
+              data.addColumn('number', 'Fatalities');
+              data.addRows(getFatalitiesData());
+  
+              var options = {
+                 showRowNumber: true,
+                 width: '100%', 
+                 height: '100%'
+              };
+                    
+              // Instantiate and draw the chart.
+              var chart = new google.visualization.Table(document.getElementById('container'));
+              chart.draw(data, options);
+           }
+           google.charts.setOnLoadCallback(drawChart);
+        </script>
       </body>
 
 

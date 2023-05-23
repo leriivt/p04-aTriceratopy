@@ -22,9 +22,13 @@ def data():
 def crash():
   return get_all_crashes()
 
-@app.route('/rank_data')
-def rank():
+@app.route('/decade_data')
+def crashes_by_decade():
   return crashes_by_decade()
+
+@app.route('/fatalities_data')
+def fatalities():
+  return most_fatalities()
 
 @app.route('/mapboxapikey')
 def mapbox():
