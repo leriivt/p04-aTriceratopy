@@ -12,6 +12,7 @@ Aeroplano Graveyardo is a global map showing all civil aviation accidents from 1
 ## Launch Codes: 
 1. Create virtual environment  
 `python -m venv squowel`  
+1. activate virtual environment
 `. squowel/bin/activate`  
 1. Install packages  
 `pip install -r requirements.txt`  
