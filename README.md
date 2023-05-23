@@ -7,7 +7,7 @@ Prattay Dey - Summary page
 ## Description:
 Aeroplano Graveyardo is a global map showing all civil aviation accidents from 1908 to 2019. Users will be able to see points on a globe of locations of crashes, select a crash and see the plane’s intended path, interact with filters like aircraft type, country of crash, deadliness, and accident year. Users will also be able to see trends in the database file. 
 ## APIs Used:  
-- [Position Stack](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_PositionStack.md)
+- [Bing Maps](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_BingMaps.md)
 - [Mapbox](https://github.com/stuy-softdev/notes-and-code/blob/main/api_kb/411_on_Mapbox.md)
 ## Launch Codes: 
 1. Create virtual environment  
@@ -20,6 +20,8 @@ Aeroplano Graveyardo is a global map showing all civil aviation accidents from 1
 1. cd into app directory  
 `cd p4-aTriceratopy/app`  
 1. Download CSV data from https://www.kaggle.com/datasets/cgurkan/airplane-crash-data-since-1908 to `p4-aTriceratopy/app`
+1. If this is your first time running the app, run reset.py with
+`python reset.py`. This will populate all the tables in the database and will take about 20 minutes to run.
 1. Start Flask server  
 `python __init__.py`  
 Go to http://127.0.0.1:5000/ in browser  
