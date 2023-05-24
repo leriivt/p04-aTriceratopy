@@ -77,7 +77,7 @@ getData().then(result => {
       });
 
     planescrashes = planescrashes.slice(0, 50);
-    drawTable(planescrashes, "Crashes", "Plane","planecrashrank");
+    drawTable(planescrashes, "Crashes", "Plane","planecrashrank", "Top 50 Most Crashed Planes");
 });
 
 
@@ -102,7 +102,7 @@ function drawFunction(arr, name, yaxis, xaxis, element) {
     chart.draw(chart_data, options);
 }
 
-function drawTable(arr, yaxis, xaxis,element){
+function drawTable(arr, yaxis, xaxis, element, name){
     var table_data = new google.visualization.DataTable();
     table_data.addColumn('string', xaxis);
     table_data.addColumn('number', yaxis);
@@ -110,5 +110,5 @@ function drawTable(arr, yaxis, xaxis,element){
 
     var table = new google.visualization.LineChart(document.getElementById(element));
 
-    table.draw(table_data, { showRowNumber: true, width: '100%', height: '100%'});
+    table.draw(table_data, { title: name,showRowNumber: true, width: '100%', height: '100%'});
 }

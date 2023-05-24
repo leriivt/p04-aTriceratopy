@@ -8,11 +8,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-  return render_template('map.html')
+  image_path = "static/flag.jpg"
+  return render_template('map.html', image_path = image_path)
 
 @app.route('/trends')
 def trends():
-  return render_template("trends.html")
+  image_path = "static/flag.jpg"
+  return render_template("trends.html", image_path = image_path)
 
 @app.route('/coordinates_data')
 def data():
@@ -36,6 +38,7 @@ def mapbox():
 
 @app.route('/summary/<planeid>')
 def summary(planeid):
+
   planeid = int(planeid)
   date = get_all_crashes()[planeid][1]
   time = get_all_crashes()[planeid][2]
@@ -48,8 +51,9 @@ def summary(planeid):
   fatalities = get_all_crashes()[planeid][9]
   ground = get_all_crashes()[planeid][10]
   summary = get_all_crashes()[planeid][11]
+  image_path = "../static/flag.jpg"
 
-  return render_template('summary.html', date = date, time = time, location = location, operator= operator, route = route, ACtype = ACtype, crew = crew, passengers = passengers, fatalities = fatalities, ground = ground, summary = summary)
+  return render_template('summary.html', date = date, time = time, location = location, operator= operator, route = route, ACtype = ACtype, crew = crew, passengers = passengers, fatalities = fatalities, ground = ground, summary = summary, image_path = image_path)
 
 if __name__ == '__main__':
   app.debug = True

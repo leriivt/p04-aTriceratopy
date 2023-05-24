@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>MAP</title>
+  <title>Aeroplano Graveyardo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
   <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet" />
@@ -14,12 +14,26 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg bg-body-info" style="height: 7vh;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="">
+        <img src={{image_path}} width="40" height="40" alt="">aTriceratopy
+      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/trends">Trends</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+    </div>
+  </nav>
   <div class="container text-center">
     <div class="row">
-      <h2>Aeroplano Graveyardo</h2>
-    </div>
-    <div class="row">
-      <div class="col"><div id="map">
+      <div class="col">
+        <div id="map">
         </div>
       </div>
       <div class="col-md-2">
@@ -53,8 +67,6 @@
             </tr>
           </tbody>
         </table>
-        <br>
-        <a href="/trends" class="btn btn-primary btn-lg">Trends Page</a>
       </div>
     </div>
     <div class="row">
