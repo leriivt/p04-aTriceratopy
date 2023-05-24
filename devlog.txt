@@ -283,6 +283,10 @@ veritL -- 2023-05--23 12:57
 --------------------------------------------------------------
 Updated README and requirements.txt
 ==============================================================
+prattayD -- 2023-05-23 13:10
+--------------------------------------------------------------
+Carried over rank.py functions into the JS in trends.html directly
+==============================================================
 jonathanS -- 2023-05-23 20:46
 --------------------------------------------------------------
 Added conditionals that account for locations that don't align with geocoder output
