@@ -1,7 +1,6 @@
 from flask import Flask, render_template
 import json
 from db import *
-from rank import *
 import api
 
 app = Flask(__name__)
@@ -23,14 +22,6 @@ def data():
 @app.route('/crashes_data')
 def crash():
   return get_all_crashes()
-
-@app.route('/decade_data')
-def crashes_by_decade():
-  return crashes_by_decade()
-
-@app.route('/fatalities_data')
-def fatalities():
-  return most_fatalities()
 
 @app.route('/mapboxapikey')
 def mapbox():
