@@ -19,11 +19,11 @@ def forward_geocode(location):
     #print(json)
     try:
         if location == "Over the North Sea" or location == "North Sea":
-            return json["resourceSets"][0]["resources"][0]["point"]["56 3"]
+            return [56, 3]
         if "English Channel" in location:
-            return json["resourceSets"][0]["resources"][0]["point"]["48 -4"]
+            return [48, -4]
         if "Gibraltar" in location:
-            return json["resourceSets"][0]["resources"][0]["point"]["36 -5"]
+            return [36, -5]
         return json["resourceSets"][0]["resources"][0]["point"]["coordinates"]
     except:
         return [None, None]
