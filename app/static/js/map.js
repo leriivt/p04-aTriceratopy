@@ -115,14 +115,17 @@ function updateValue(value) {
         if(result.crash[i][9] != "NULL"){
           numfatalities += Number(result.crash[i][9]);
         }
+        
+        if(result.crash[i][8] == "NULL" && result.crash[i][7] == "NULL" && result.crash[i][9] != "NULL"){ //This may seem really stupid but for some reason some points in the (1910-1920) range have null as both their crew & passengers but they have a fatality count
+          numpeople += Number(result.crash[i][9]);
+        }
         if(result.crash[i][7] != "NULL"){
           numpeople += Number(result.crash[i][7])
         }
         if(result.crash[i][8] != "NULL"){
           numpeople += Number(result.crash[i][8]);
         }
-
-        
+      
 
         var link = 'summary/'+ i;
         var summary = result.crash[i][1] + "<br>" + result.crash[i][2] + "<br>" + result.crash[i][11] + "<br>" + "<a href=" + link + ">extended info </a>";
@@ -134,6 +137,7 @@ function updateValue(value) {
     const fata = document.getElementById('fatalities');
     fata.textContent = numfatalities;
     const people = document.getElementById('totalP');
+    console.log(numpeople);
     people.textContent = numpeople;
     const survive = document.getElementById('surivors')
     numsurivors = (numpeople - numfatalities);
